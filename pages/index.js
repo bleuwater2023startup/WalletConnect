@@ -20,9 +20,9 @@ export default function Home() {
         ],
         chains: [80001],
         events: ["chainChanged", "accountsChanged"],
-        // rpcMap: {
-        //   80001: "https://rpc.ankr.com/polygon_mumbai",
-        // },
+        rpcMap: {
+          80001: "https://rpc.ankr.com/polygon_mumbai",
+        },
       });
 
       console.log(provider);
