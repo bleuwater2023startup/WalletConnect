@@ -18,12 +18,10 @@ export default function Home() {
           "personal_sign",
           "eth_signTypedData",
         ],
+        chains: [80001],
         events: ["chainChanged", "accountsChanged"],
         rpcMap: {
           80001: "https://rpc.ankr.com/polygon_mumbai",
-          137: "https://polygon.llamarpc.com",
-          1: "https://rpc.ankr.com/eth",
-          5: "https://mainnet.infura.io/v3/",
         },
       });
 
