@@ -13,7 +13,7 @@ export default function Home() {
     try {
       const provider = await EthereumProvider.init({
         projectId: "4462f211ae9d8e31c96b53bd082c3ac0",
-        chains: [1],
+        chains: [1, 5, 80001, 137],
         showQrModal: true,
       });
 
