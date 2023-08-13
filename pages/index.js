@@ -28,6 +28,26 @@ export default function Home() {
     console.log("connection ended");
   };
 
+  const forceDisconnect = async () => {
+    console.log("connecting...");
+    try {
+      const provider = await EthereumProvider.init({
+        projectId: "4462f211ae9d8e31c96b53bd082c3ac0",
+        chains: [1],
+        showQrModal: true,
+      });
+
+      console.log("before:", provider);
+      provider.disconnect();
+      setProvider(provider);
+      console.log("after: ", provider);
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log("connection ended");
+  };
+
   const getBalance = async () => {
     const provider = new ethers.providers.Web3Provider(web3Provider);
     const balance = await provider.getBalance(web3Provider.accounts[0]);
@@ -92,6 +112,7 @@ export default function Home() {
       >
         disconnect
       </button>
+      <button onClick={forceDisconnect}>force disconnect</button>
       <button onClick={getBalance}>getBalance</button>
     </div>
   );
