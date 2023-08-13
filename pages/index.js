@@ -3,6 +3,7 @@ import Head from "next/head";
 import { EthereumProvider } from "@walletconnect/ethereum-provider";
 import { useState } from "react";
 import { ethers } from "ethers";
+import { formatEther } from "viem";
 
 export default function Home() {
   const [web3Provider, setProvider] = useState();
@@ -29,8 +30,8 @@ export default function Home() {
 
   const getBalance = async () => {
     const provider = new ethers.providers.Web3Provider(web3Provider);
-    const balance = await provider.getBalance(web3Provider?.accounts[0]);
-    console.log({ balance });
+    const balance = await provider.getBalance(web3Provider.accounts[0]);
+    console.log({ balance: formatEther(balance.toString()) });
   };
 
   return (
@@ -60,9 +61,7 @@ export default function Home() {
       >
         disconnect
       </button>
-      <button disabled={!web3Provider?.connected} onClick={getBalance}>
-        getBalance
-      </button>
+      <button onClick={getBalance}>getBalance</button>
     </div>
   );
 }

@@ -13,12 +13,13 @@
     "@walletconnect/modal": "^2.6.1",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
-    "ethers": "^6.7.0",
+    "ethers": "^5.7.2",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "viem": "^1.6.0",
-    "wagmi": "^1.3.10"
+    "wagmi": "^1.3.10",
+    "web3": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "8.47.0",
