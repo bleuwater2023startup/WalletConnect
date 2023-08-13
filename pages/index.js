@@ -2,6 +2,7 @@ import Head from "next/head";
 // import { Web3Button } from "@web3modal/react";
 import { EthereumProvider } from "@walletconnect/ethereum-provider";
 import { useState } from "react";
+import { ethers } from "ethers";
 
 export default function Home() {
   const [web3Provider, setProvider] = useState();
