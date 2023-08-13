@@ -35,6 +35,7 @@ export default function Home() {
   };
 
   const subscribeToWalletEvents = () => {
+    console.log("subscribed...");
     // Subscribe to accounts change
     web3Provider.on("accountsChanged", (accounts) => {
       console.log("account changed ", accounts[0]);
