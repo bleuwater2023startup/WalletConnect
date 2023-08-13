@@ -1,7 +1,7 @@
 import Head from "next/head";
 // import { Web3Button } from "@web3modal/react";
 import { EthereumProvider } from "@walletconnect/ethereum-provider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { formatEther } from "viem";
 
@@ -20,7 +20,6 @@ export default function Home() {
       console.log("before:", provider);
       await provider.enable();
       setProvider(provider);
-      subscribeToWalletEvents();
       console.log("after: ", provider);
     } catch (error) {
       console.log(error);
@@ -59,6 +58,11 @@ export default function Home() {
       // window.localStorage.removeItem("walletpreference");
     });
   };
+
+  useEffect(() => {
+    if (!web3Provider) return;
+    subscribeToWalletEvents();
+  }, [web3Provider]);
 
   return (
     <div>
