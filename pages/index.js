@@ -13,13 +13,14 @@ export default function Home() {
     try {
       const provider = await EthereumProvider.init({
         projectId: "4462f211ae9d8e31c96b53bd082c3ac0",
-        chains: [1, 5, 80001, 137],
+        chains: [1],
         showQrModal: true,
       });
 
       console.log("before:", provider);
       await provider.enable();
       setProvider(provider);
+      subscribeToWalletEvents();
       console.log("after: ", provider);
     } catch (error) {
       console.log(error);
@@ -32,6 +33,31 @@ export default function Home() {
     const provider = new ethers.providers.Web3Provider(web3Provider);
     const balance = await provider.getBalance(web3Provider.accounts[0]);
     console.log({ balance: formatEther(balance.toString()) });
+  };
+
+  const subscribeToWalletEvents = () => {
+    // Subscribe to accounts change
+    web3Provider.on("accountsChanged", (accounts) => {
+      console.log("account changed ", accounts[0]);
+    });
+
+    // Subscribe to chainId change
+    web3Provider.on("chainChanged", (chainId) => {
+      console.log("chain changed: ", chainId);
+    });
+
+    // Subscribe to session connection
+    web3Provider.on("connect", () => {
+      console.log("connected");
+    });
+
+    // Subscribe to session disconnection
+    web3Provider.on("disconnect", (code, reason) => {
+      console.log("disconnected");
+      // dispatch(setAccount(""));
+      // dispatch(setChainId(""));
+      // window.localStorage.removeItem("walletpreference");
+    });
   };
 
   return (
