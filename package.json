@@ -13,6 +13,7 @@
     "@walletconnect/modal": "^2.6.1",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
+    "ethers": "^6.7.0",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",

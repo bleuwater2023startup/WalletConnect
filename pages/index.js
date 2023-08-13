@@ -26,6 +26,12 @@ export default function Home() {
     console.log("connection ended");
   };
 
+  const getBalance = async () => {
+    const provider = new ethers.providers.Web3Provider(web3Provider);
+    const balance = await provider.getBalance(web3Provider?.accounts[0]);
+    console.log({ balance });
+  };
+
   return (
     <div>
       <Head>
@@ -47,6 +53,15 @@ export default function Home() {
       <div>{web3Provider?.chainId}</div>
 
       <button onClick={handleConnect}>Connect</button>
+      <button
+        disabled={!web3Provider?.connected}
+        onClick={() => web3Provider?.disconnect()}
+      >
+        disconnect
+      </button>
+      <button disabled={!web3Provider?.connected} onClick={getBalance}>
+        getBalance
+      </button>
     </div>
   );
 }
